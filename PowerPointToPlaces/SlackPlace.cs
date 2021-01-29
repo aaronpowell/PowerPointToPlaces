@@ -18,7 +18,7 @@ namespace PowerPointToPlaces
         public async Task SendAsync(string note)
         {
             var client = new HttpClient();
-            var text = line.Replace("SLACK:", "").Trim();
+            var text = note.Replace("SLACK:", "").Trim();
             Console.WriteLine($"\tSending {text} to slack");
             await client.PostAsync(SLACK_URI, new StringContent(JsonSerializer.Serialize(new { text })));
         }
